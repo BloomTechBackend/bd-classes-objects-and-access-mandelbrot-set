@@ -18,13 +18,24 @@ public class Main extends PApplet {
         Mandelbrot();
     }
 
-//    public Cnum ZnPlusOne(Cnum Zn, Cnum C) {
-//          //Compute Zn+1 = Zn^2 + C
-//    }
+    public Cnum ZnPlusOne(Cnum Zn, Cnum C) {
+          //Compute Zn+1 = Zn^2 + C
+        float Zn2a = Zn.getA() * Zn.getA() - Zn.getB() * Zn.getB(); // a^2 - b^2
+        float Zn2b = 2 * Zn.getA() * Zn.getB(); // 2ab
+        Cnum Zn2 = new Cnum(Zn2a, Zn2b);
 
-//    public float getCnumMagnitude(Cnum cnum) {
-//
-//    }
+        float a = Zn2.getA() + C.getA(); // Zn2a + C.a
+        float b = Zn2.getB() + C.getB(); // Zn2b + C.b
+        return new Cnum(a, b);
+
+        //return new Cnum(Zn2.getA() + C.getA(), Zn2.getB() + C.getB());
+    }
+
+    public float getCnumMagnitude(Cnum cnum) {
+        //return new PVector(cnum.getA(), cnum.getB()).mag();
+        
+        return (float) Math.sqrt(cnum.getA() * cnum.getA() + cnum.getB() * cnum.getB());
+    }
 
     public void Mandelbrot() {
         noStroke();
